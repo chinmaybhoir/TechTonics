@@ -19,6 +19,8 @@ import com.atmecs.TechTonics.validations.LoginValidate;
 @WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String adminEmailId = "admin@atmecs.com";
+	private static final String adminPassword = "admin123";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,9 +44,20 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 			String employeeEmail = request.getParameter("employeeEmail");
+			String employeePassword = request.getParameter("employeePassword");
 			try{
+				if(employeeEmail.equals(adminEmailId)){
+					if(employeePassword.equals(adminPassword)){
+						request.getRequestDispatcher("adminLoginServlet").forward(request, response);
+					}
+					else{
+						request.setAttribute("message", "Incorrect password! Please try again.");
+						request.getRequestDispatcher("login_signup.jsp").forward(request, response);
+					}
+				}
+				else{
 			if(LoginValidate.isEmailRegistered(employeeEmail)){
-				String employeePassword = request.getParameter("employeePassword");
+				
 				if(LoginValidate.isValidated(employeeEmail, employeePassword)){
 					HttpSession session = request.getSession();
 					session.setAttribute("user", EmployeeInfo.getEmployeeInfo(employeeEmail));
@@ -59,6 +72,7 @@ public class LoginServlet extends HttpServlet {
 			else{
 				request.setAttribute("message", "The email you entered is not registered. Please enter correct email");
 				request.getRequestDispatcher("login_signup.jsp").forward(request, response);
+				}
 			}
 			} catch(Exception e){
 				System.out.println("Exception at doPost of LoginServlet");

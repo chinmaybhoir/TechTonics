@@ -57,7 +57,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <br>
       
       <!-- Interests --> 
-     
+     <h5 class="w3-center">${talkRequestMessage}</h5>
       <br>
       
       <!-- Alert Box -->
@@ -70,7 +70,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <br>
       
       <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center">
-        <button type="button" onclick="location.href='newTechTalkReq.jsp'"  class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> Request for TechTalk </button>
+        <button type="button" onclick="location.href='techtalkform.jsp'"  class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> Request for TechTalk </button>
       </div>
       <br>
       

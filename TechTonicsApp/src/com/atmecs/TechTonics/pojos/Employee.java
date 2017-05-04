@@ -11,6 +11,12 @@ public class Employee {
 		this.employeePassword = employeePassword;
 	}
 	
+	public Employee(String employeeEmail, String employeeName, String dummyArg1, String dummyArg2) {
+		super();
+		this.employeeEmail = employeeEmail;
+		this.employeeName = employeeName;
+	}
+
 	public Employee(String employeeEmail, String employeePassword) {
 		super();
 		this.employeeEmail = employeeEmail;
