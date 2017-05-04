@@ -22,7 +22,7 @@
       
       <div class="tab-content">
       <div id="login">   
-          <h1>Welcome Back!</h1>
+          <h1>Welcome!</h1>
           <h5>${message}</h5>
           <form action="loginServlet" method="post">
           

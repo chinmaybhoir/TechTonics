@@ -83,7 +83,7 @@
                 </div>
             </div>
 			<br>
-            <a href="login_signup.html" class="down-btn page-scroll">
+            <a href="login_signup.jsp" class="down-btn page-scroll">
 			SignUp/Login
                 <span class="fa fa-angle-right"></span>
             </a>

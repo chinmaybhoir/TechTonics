@@ -7,19 +7,19 @@ html {
 }
 
 body {
-	background: url(../img/bg1.jpg);
+	background: url(../img/bg4.jpg);
  
   font-family: 'Titillium Web', sans-serif;
 }
 
 a {
   text-decoration: none;
-  color: #1ab188;
+  color: rgb(20, 35, 61);
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 a:hover {
-  color: #179b77;
+  color: rgb(20, 35, 61);
 }
 
 .form {
@@ -45,8 +45,8 @@ a:hover {
   display: block;
   text-decoration: none;
   padding: 15px;
-  background: rgb(26, 19, 0);
-  color: #a0b3b0;
+  background: rgb(20, 35, 61);
+  color:rgb(20, 35, 61);
   font-size: 20px;
   float: left;
   width: 50%;
@@ -56,11 +56,11 @@ a:hover {
   transition: .5s ease;
 }
 .tab-group li a:hover {
-  background: #179b77;
+  background:rgb(20, 35, 61);
   color: #ffffff;
 }
 .tab-group .active a {
-  background: rgb(77, 56, 0);
+  background:rgb(20, 35, 61);
   color: #ffffff;
 }
 
@@ -76,7 +76,7 @@ h1 {
 }
 h5 {
   text-align: center;
-  color: #8B0000;
+  color: rgba(255, 255, 255, 0.5);
   
 }
 
