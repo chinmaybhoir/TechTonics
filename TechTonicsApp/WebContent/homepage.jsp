@@ -1,9 +1,11 @@
+<%@page import="com.atmecs.TechTonics.util.TalkAttendees"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%-- <%@ page import="java.util.Date" %> --%>
 <%@ page import="java.sql.Date" %>
 <%@ page import="com.atmecs.TechTonics.pojos.TechTalk" %>
+<%@ page import="com.atmecs.TechTonics.pojos.Employee" %>
 
 <!DOCTYPE html>
 <html>
@@ -102,11 +104,25 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 		  	<td>${v.talkTitle}</td>
 		    <td>${v.talkDescription}</td>
 		    <td>${v.talkPresenter.employeeName}</td>   
-		    <td><form action="registerToTechTalk" name="myForm" id="myForm" method="post">
+		    <!--  SNIPPET TO CHECK IF ATTENDEE -->
+		    <%
+		    	HttpSession session1 = request.getSession();
+		    	String employeeEmail =((Employee)session1.getAttribute("user")).getEmployeeEmail();
+		    	String talkTitle = ((TechTalk)pageContext.getAttribute("v")).getTalkTitle();
+		    	boolean isAttendee = TalkAttendees.ifAttendee(talkTitle, employeeEmail);
+		    	pageContext.setAttribute("isAttendee", isAttendee);
+		    	%>
+		    	<c:choose>
+		    <c:when test="${not isAttendee}">
+		     <td><form action="registerToTechTalk" name="myForm" id="myForm" method="post">
 		    <input type="hidden" name="talkTitle" value="${v.talkTitle}"></input>
 		    <input type="submit" name="Click to register" value="Click to register"/> 
 		    </form></td>
-		  
+		    </c:when>
+		   	 <c:otherwise> 
+		   		<td>&#10004 You've already registered</td>
+		   	 </c:otherwise> 
+		  </c:choose>
 		  </tr>
 		  
 		  </c:forEach>
@@ -130,9 +146,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   <p class="small text-muted text-center">Copyright &copy; 2017, ATMECS Technologies</p>
 </footer>
 
-<footer class="w3-container w3-theme-d5">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
+
  
 <script>
 // Accordion
